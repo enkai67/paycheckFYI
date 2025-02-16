@@ -1,0 +1,222 @@
+/* =======================
+   Overall Section Container
+   ======================= */
+.salary-section {
+    position: relative;
+    width: 100%;
+    /* Use full width of viewport */
+    margin: 20px 0 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+/* =======================
+   Salary Scroll Container  
+   ======================= */
+.salary-scroll-container {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 8px;
+    padding: 10px 0;
+    margin: 0 auto 5px auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    position: relative;
+}
+
+/* Hide WebKit scrollbar */
+.salary-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* =======================
+   Salary Wrapper
+   ======================= */
+.salary-wrapper {
+    position: relative;
+    padding: 20px 2px 15px 2px;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+/* Animation for salary wrappers (except add-salary) */
+.salary-wrapper:not(:first-child) {
+    animation: slideInFromLeft 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+/* Sequential delays */
+.salary-wrapper:nth-child(2) {
+    animation-delay: 0s;
+}
+
+.salary-wrapper:nth-child(3) {
+    animation-delay: 0.1s;
+}
+
+.salary-wrapper:nth-child(4) {
+    animation-delay: 0.2s;
+}
+
+.salary-wrapper:nth-child(5) {
+    animation-delay: 0.3s;
+}
+
+.salary-wrapper:nth-child(6) {
+    animation-delay: 0.4s;
+}
+
+/* =======================
+   Salary Card Styles
+   ======================= */
+.salary-card {
+    position: relative;
+    padding: 8px 20px;
+    min-height: 40px;
+    width: 120px;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s ease;
+}
+
+.salary-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Specific styles for the Add Salary card */
+.salary-card.add-salary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    min-height: 40px;
+    background-color: #f8f9fa;
+    border: 1px dashed #ccc;
+    cursor: pointer;
+    margin: 2px 0;
+}
+
+.salary-card.add-salary .icon-wrapper {
+    display: flex;
+    align-items: center;
+    margin-right: 4px;
+}
+
+.salary-card.add-salary .add-icon {
+    font-size: 11px;
+    color: #666;
+}
+
+.salary-card.add-salary p {
+    margin: 0;
+    font-size: 15px;
+    text-align: center;
+    color: #666;
+    line-height: 1.2;
+}
+
+.salary-card.add-salary:hover {
+    background-color: #f0f0f0;
+    border-color: #999;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border: 1px dashed #999;
+}
+
+/* =======================
+   Icon Wrapper for "Add Salary" Card
+   ======================= */
+.icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =======================
+   Updated Time (Clock Icon)
+   ======================= */
+.updated-time {
+    position: absolute;
+    top: 5px;
+    left: 2px;
+    font-size: 12px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    background: transparent;
+    padding: 0 2px;
+    border-radius: 4px;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.updated-time .clock-icon {
+    font-size: 10px;
+    margin-right: 4px;
+}
+
+/* =======================
+   Salary Text Styles
+   ======================= */
+.salary-amount {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin: 2px;
+}
+
+.salary-job,
+.salary-city {
+    font-size: 12px;
+    white-space: nowrap;
+    margin: 2px;
+}
+
+.salary-job {
+    color: #666;
+}
+
+.salary-city {
+    color: #888;
+}
+
+/* =======================
+   View All Button
+   ======================= */
+.view-all-button {
+    position: absolute;
+    right: 0px;
+    bottom: -10px;
+    padding: 6px 14px;
+    font-size: 14px;
+    color: #666;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s ease;
+    background: none;
+}
+
+.view-all-button:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+/* =======================
+   Animation Keyframes
+   ======================= */
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

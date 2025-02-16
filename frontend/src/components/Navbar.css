@@ -1,0 +1,101 @@
+/*******************************************************
+ *                Navbar (Top Section)                 *
+ *******************************************************/
+.navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Inner row: left logo, right hamburger */
+.navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Logo left, hamburger right */
+    padding: 10px 0 10px 20px;
+    /* top/right/bottom/left */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Logo on the far left, some left padding */
+.logo {
+    text-decoration: none;
+    color: #000;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Hamburger flush right */
+.hamburger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-right: 0;
+    /* ensure no extra space on the right */
+}
+
+.hamburger-line {
+    width: 25px;
+    height: 3px;
+    background-color: #000;
+    border-radius: 2px;
+}
+
+/*******************************************************
+ *           Animated Dropdown (Push-Down)             *
+ *******************************************************/
+/* Always in the DOM, but default to zero height */
+.navbar-menu {
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    /* hide content when height is 0 */
+    max-height: 0;
+    /* collapsed by default */
+    transition: max-height 0.5s ease-in-out;
+    padding: 0 20px;
+    /* horizontal padding */
+}
+
+/* When open, expand the height enough for the links */
+.navbar-menu.open {
+    max-height: 300px;
+    /* adjust as needed for your content */
+}
+
+/* Vertical list of black links */
+.navbar-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.navbar-menu li {
+    margin-bottom: 10px;
+}
+
+.navbar-menu li:last-child {
+    margin-bottom: 0;
+}
+
+.navbar-menu a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px 0;
+    transition: background 0.2s ease;
+}
+
+.navbar-menu a:hover {
+    background-color: #f2f2f2;
+}
