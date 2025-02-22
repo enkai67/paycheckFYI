@@ -1,0 +1,41 @@
+/* =======================
+   Pagination Styles
+   ======================= */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+/* Page Icon (Buttons) */
+.page-icon {
+    background: none;
+    border: 1px solid #ccc;
+    padding: 4px 7px;
+    margin: 0 3px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.2s ease;
+}
+
+.page-icon:hover {
+    background: #000000;
+    color: white;
+}
+
+/* Active Page Button */
+.page-icon.active {
+    background: #000000;
+    color: white;
+    border-color: #000000;
+    font-weight: bold;
+}
+
+/* Dots */
+.dots {
+    margin: 0 5px;
+    font-size: 14px;
+    color: #888;
+}

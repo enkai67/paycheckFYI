@@ -1,0 +1,94 @@
+/* =======================
+   Title Directory Styles
+   ======================= */
+.title-directory {
+    text-align: center;
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Header */
+.title-directory h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #222;
+    /* ✅ Changed from blue to dark grey */
+}
+
+.title-directory p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+/* =======================
+   Job List Container
+   ======================= */
+.title-directory-container {
+    text-align: left;
+    max-width: 600px;
+    margin: auto;
+}
+
+/* =======================
+   Job Categories
+   ======================= */
+.title-directory-category {
+    margin-bottom: 20px;
+}
+
+/* Category Titles */
+.title-directory-category-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #222;
+    /* ✅ Changed from blue to dark grey */
+    border-bottom: 2px solid #888;
+    /* ✅ Neutral grey */
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+/* Job List */
+.title-directory-job-list {
+    list-style: none;
+    padding: 0;
+}
+
+/* Job Titles */
+.title-directory-job-title {
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border-left: 3px solid #ddd;
+    /* ✅ Neutral grey */
+    background: #f9f9f9;
+    margin: 4px 0;
+}
+
+.title-directory-job-title:hover {
+    background: #e9ecef;
+    border-left: 3px solid #444;
+    /* ✅ Darker grey */
+}
+
+/* =======================
+   Back Button
+   ======================= */
+.title-directory-back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #333;
+    /* ✅ Changed from blue to black */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.title-directory-back-button:hover {
+    background-color: #222;
+}

@@ -4,12 +4,12 @@
 .salary-section {
     position: relative;
     width: 100%;
-    /* Use full width of viewport */
-    margin: 20px 0 0 0;
-    padding: 0;
+    margin: 10px 0 0 0;
+    padding: 15px 10px ;
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    overflow: hidden;
 }
 
 /* =======================
@@ -21,11 +21,12 @@
     overflow-x: auto;
     white-space: nowrap;
     gap: 8px;
-    padding: 10px 0;
+    padding: 0px 0;
     margin: 0 auto 5px auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
     position: relative;
+    max-width: 100%;
 }
 
 /* Hide WebKit scrollbar */
@@ -42,6 +43,7 @@
     flex: 0 0 auto;
     display: flex;
     align-items: center;
+    min-width: 120px;
 }
 
 /* Animation for salary wrappers (except add-salary) */
@@ -83,6 +85,7 @@
     background: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.2s ease;
+    flex-shrink: 0;
 }
 
 .salary-card:hover {
@@ -191,8 +194,8 @@
 .view-all-button {
     position: absolute;
     right: 0px;
-    bottom: -10px;
-    padding: 6px 14px;
+    bottom: -5px;
+    padding: 12px 25px;
     font-size: 14px;
     color: #666;
     text-decoration: none;

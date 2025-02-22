@@ -39,6 +39,11 @@ const Navbar = () => {
                             COMPARE
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/about-me" onClick={closeMenu}>
+                            ABOUT ME
+                        </Link>
+                    </li>
                 </ul>
             </div>
         </>

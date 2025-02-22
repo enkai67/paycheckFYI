@@ -3,25 +3,30 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import '#styles/JobInfoSection.css';
 import { getJobs } from '#apis/index';
+import Pagination from '#components/Pagination';
 
 const JobInfoSection = () => {
-    // Track the currently expanded row (null = none)
+    const jobsPerPage = 3;
     const [expandedRow, setExpandedRow] = useState(null);
     const [jobData, setJobData] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const jobs = await getJobs();
+            setJobData(jobs);
+        };
+        fetchData();
+    }, []);
+
+    const totalPages = Math.ceil(jobData.length / jobsPerPage);
+    const indexOfLastJob = currentPage * jobsPerPage;
+    const indexOfFirstJob = indexOfLastJob - jobsPerPage;
+    const currentJobs = jobData.slice(indexOfFirstJob, indexOfLastJob);
 
     const toggleRow = (id) => {
         setExpandedRow(expandedRow === id ? null : id);
     };
-
-    // Fetch job data on component mount
-    useEffect(() => {
-        const fetchData = async () => {
-            const jobs = await getJobs();
-            setJobData(jobs.slice(0, 10));
-        };
-
-        fetchData();
-    }, []);
 
     return (
         <div className="job-info-section">
@@ -36,11 +41,10 @@ const JobInfoSection = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {jobData.map((job) => {
+                        {currentJobs.map((job) => {
                             const isExpanded = expandedRow === job.id;
                             return (
                                 <React.Fragment key={job.id}>
-                                    {/* Main row (always visible) */}
                                     <tr className="table-row" onClick={() => toggleRow(job.id)}>
                                         <td>
                                             <div className="arrow-and-company">
@@ -59,10 +63,13 @@ const JobInfoSection = () => {
                                         <td>${job.total}</td>
                                     </tr>
 
-                                    {/* Detail row (always in the DOM for smooth animation) */}
                                     <tr className="detail-row">
                                         <td colSpan="4">
-                                            <div className={'job-detail-content-wrapper ' + (isExpanded ? 'expanded' : '')}>
+                                            <div
+                                                className={
+                                                    'job-detail-content-wrapper ' + (isExpanded ? 'expanded' : '')
+                                                }
+                                            >
                                                 <div className="job-detail-content">
                                                     <p>
                                                         <strong>Years of Experience:</strong> {job.experience}
@@ -83,6 +90,9 @@ const JobInfoSection = () => {
                     </tbody>
                 </table>
             </div>
+
+            {/* ✅ Pagination Below Table */}
+            <Pagination totalPages={totalPages} currentPage={currentPage} onPageChange={setCurrentPage} />
         </div>
     );
 };

@@ -26,7 +26,7 @@ const Footnote = () => {
                                 <a href="/companies">Companies</a>
                             </li>
                             <li>
-                                <a href="/about">About Me</a>
+                                <a href="/about-me">About Me</a>
                             </li>
                         </ul>
                     </nav>

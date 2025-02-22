@@ -1,7 +1,6 @@
 import HeroSection from '#components/HeroSection';
 import JobScroller from '#components/JobScroller';
 import SalarySection from '#components/SalarySection';
-import Footnote from '../components/Footnote';
 import JobInfoSection from '../components/JobInfoSection';
 
 const Home = () => {
@@ -11,7 +10,6 @@ const Home = () => {
             <JobScroller />
             <SalarySection />
             <JobInfoSection />
-            <Footnote />
         </div>
     );
 };
