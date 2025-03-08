@@ -1,4 +1,4 @@
 {
-  "build_command": "apk add --no-cache nodejs npm && npm install",
+  "build_command": "npm install",
   "start_command": "npm start"
 }
