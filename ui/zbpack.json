@@ -1,0 +1,4 @@
+{
+  "build_command": "npm install && npm run build",
+  "start_command": "serve -s build -l 3000"
+}
