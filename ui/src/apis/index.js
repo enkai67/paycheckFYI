@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001';
+import { API_URL } from '#configs';
 
 export const getRoles = async () => {
     try {
@@ -32,9 +31,11 @@ export const getSalaries = async () => {
     }
 };
 
-export const getJobs = async () => {
+export const getJobs = async (title) => {
     try {
-        const response = await axios.get(`${API_URL}/jobs`);
+        const response = await axios.get(`${API_URL}/jobs`, {
+            params: { title },
+        });
         return response.data;
     } catch (error) {
         console.error('Error fetching jobs:', error);
@@ -45,7 +46,6 @@ export const getJobs = async () => {
 export const postSalaries = async (salaryData) => {
     try {
         const response = await axios.post(`${API_URL}/salaries`, salaryData);
-        console.log('response', response);
         return response.data;
     } catch (error) {
         console.error('Error submitting salary:', error);

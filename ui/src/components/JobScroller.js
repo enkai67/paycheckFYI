@@ -29,7 +29,7 @@ const JobScroller = () => {
                         ))}
                     </div>
                 </div>
-                <Link to="/title-directory" className="more-button">
+                <Link to="/job-title-directory" className="more-button">
                     More &gt;
                 </Link>
             </div>

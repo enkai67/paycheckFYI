@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import '#styles/JobInfoSection.css';
@@ -6,27 +6,32 @@ import { getJobs } from '#apis/index';
 import Pagination from '#components/Pagination';
 
 const JobInfoSection = () => {
-    const jobsPerPage = 3;
+    const jobsPerPage = 10;
     const [expandedRow, setExpandedRow] = useState(null);
     const [jobData, setJobData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+    const contentRefs = useRef({});
 
     useEffect(() => {
         const fetchData = async () => {
-            const jobs = await getJobs();
-            setJobData(jobs);
+            try {
+                const jobs = await getJobs();
+                setJobData(jobs);
+            } catch (error) {
+                console.error('Error fetching jobs:', error);
+            }
         };
         fetchData();
     }, []);
+
+    const toggleRow = (id) => {
+        setExpandedRow(expandedRow === id ? null : id);
+    };
 
     const totalPages = Math.ceil(jobData.length / jobsPerPage);
     const indexOfLastJob = currentPage * jobsPerPage;
     const indexOfFirstJob = indexOfLastJob - jobsPerPage;
     const currentJobs = jobData.slice(indexOfFirstJob, indexOfLastJob);
-
-    const toggleRow = (id) => {
-        setExpandedRow(expandedRow === id ? null : id);
-    };
 
     return (
         <div className="job-info-section">
@@ -35,9 +40,11 @@ const JobInfoSection = () => {
                     <thead>
                         <tr>
                             <th>Company</th>
-                            <th>Years of Experience</th>
+                            <th>Job Title</th>
+                            <th>Industry</th>
+                            <th>Experience</th>
                             <th>Base Salary</th>
-                            <th>Total</th>
+                            <th>Total Compensation</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,32 +60,61 @@ const JobInfoSection = () => {
                                                     className="expand-icon"
                                                 />
                                                 <div className="company-info">
-                                                    <span className="company-name">{job.company}</span>
-                                                    <span className="company-location">{job.location}</span>
+                                                    <span className="company-name">{job.company || 'N/A'}</span>
+                                                    <span className="company-location">
+                                                        {job.location || 'Unknown'}
+                                                    </span>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>{job.experience}</td>
-                                        <td>${job.baseSalary}</td>
-                                        <td>${job.total}</td>
+                                        <td>{job.title || 'Unknown'}</td>
+                                        <td>{job.industry || 'Not Specified'}</td>
+                                        <td>{job.experience || 'N/A'}</td>
+                                        <td>${job.baseSalary?.toLocaleString() || 'N/A'}</td>
+                                        <td>${job.total?.toLocaleString() || 'N/A'}</td>
                                     </tr>
 
                                     <tr className="detail-row">
-                                        <td colSpan="4">
+                                        <td colSpan="6">
                                             <div
-                                                className={
-                                                    'job-detail-content-wrapper ' + (isExpanded ? 'expanded' : '')
-                                                }
+                                                ref={(el) => (contentRefs.current[job.id] = el)}
+                                                className="job-detail-content-wrapper"
+                                                style={{
+                                                    maxHeight: isExpanded
+                                                        ? `${contentRefs.current[job.id]?.scrollHeight}px`
+                                                        : '0px',
+                                                    transition: 'max-height 0.4s ease-in-out, padding 0.3s ease-in-out'
+                                                }}
                                             >
                                                 <div className="job-detail-content">
                                                     <p>
-                                                        <strong>Years of Experience:</strong> {job.experience}
+                                                        <strong>Company Size:</strong> {job.companySize || 'N/A'}
                                                     </p>
                                                     <p>
-                                                        <strong>Company:</strong> {job.company}
+                                                        <strong>Employment Type:</strong> {job.employmentType || 'N/A'}
                                                     </p>
                                                     <p>
-                                                        <strong>Total Compensation:</strong> ${job.total}
+                                                        <strong>Remote:</strong> {job.remote ? 'Yes' : 'No'}
+                                                    </p>
+                                                    <p>
+                                                        <strong>Work Hours Per Week:</strong>{' '}
+                                                        {job.workingHours || 'Unknown'}
+                                                    </p>
+                                                    <p>
+                                                        <strong>Stock Options:</strong>{' '}
+                                                        {job.stockOptions ? 'Yes' : 'No'}
+                                                    </p>
+                                                    <p>
+                                                        <strong>Skills:</strong>{' '}
+                                                        {job.skills?.join(', ') || 'Not Provided'}
+                                                    </p>
+                                                    <p>
+                                                        <strong>Work-Life Balance:</strong>{' '}
+                                                        {job.workLifeBalance || 'N/A'} ⭐
+                                                    </p>
+                                                    <p>
+                                                        <strong>Job Satisfaction:</strong>{' '}
+                                                        {job.jobSatisfaction || 'N/A'} ⭐
                                                     </p>
                                                 </div>
                                             </div>
@@ -91,8 +127,9 @@ const JobInfoSection = () => {
                 </table>
             </div>
 
-            {/* ✅ Pagination Below Table */}
-            <Pagination totalPages={totalPages} currentPage={currentPage} onPageChange={setCurrentPage} />
+            {totalPages > 1 && (
+                <Pagination totalPages={totalPages} currentPage={currentPage} onPageChange={setCurrentPage} />
+            )}
         </div>
     );
 };

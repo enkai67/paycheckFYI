@@ -1,0 +1,25 @@
+.job-list-page {
+    text-align: center;
+    padding: 0px;
+}
+
+/* ✅ Ensures horizontal scrolling */
+.job-table-scroll-wrapper {
+    overflow-x: auto;
+    width: 100%;
+    max-width: 100vw;
+    border: 10px 10px 10px 10px;
+    padding: 10px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.job-table-scroll-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.job-table-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}

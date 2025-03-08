@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '#configs';
+import { QRCodeCanvas } from 'qrcode.react';
 import '#styles/AddSalary.css';
 
 const AddSalary = () => {
@@ -23,7 +25,7 @@ const AddSalary = () => {
 
         try {
             // ✅ Send data to the backend
-            await axios.post(`${process.env.REACT_APP_API_URL}/salaries`, formData);
+            await axios.post(`${API_URL}/salaries`, formData);
             console.log('Submitted Data:', formData);
 
             // ✅ Redirect to Salary Submission Page
@@ -33,10 +35,10 @@ const AddSalary = () => {
         }
     };
 
-
     return (
         <div className="add-salary-page">
             <h2>Share Your Salary Information</h2>
+
             <form onSubmit={handleSubmit} className="salary-form">
                 <label>
                     Job Title:
@@ -60,6 +62,12 @@ const AddSalary = () => {
                 </label>
                 <button type="submit">Submit</button>
             </form>
+
+            {/* QR Code Section */}
+            <div className="qr-code">
+                <h3>Scan this QR Code</h3>
+                <QRCodeCanvas value={`${API_URL}/add-salary`} size={50} />
+            </div>
         </div>
     );
 };

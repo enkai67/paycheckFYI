@@ -2,7 +2,7 @@
  *                Overall Section Styles               *
  *******************************************************/
 .job-info-section {
-    margin: 10px auto;
+    margin: 10px 30px 0px 0px;
     max-width: 800px;
     padding: 0 0px 0px 20px;
 }
@@ -103,19 +103,31 @@
     padding: 0;
     border-top: 1px solid #e2e2e2;
     background-color: #fcfcfc;
+    width: 100%;
 }
 
 .job-detail-content-wrapper {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
+    transition: max-height 0.4s ease-in-out, padding 0.3s ease-in-out;
 }
 
 .job-detail-content-wrapper.expanded {
-    max-height: 200px;
-    /* Adjust if needed */
+    display: block;
+    padding: 12px 16px;
 }
 
 .job-detail-content {
     padding: 10px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.job-detail-content p {
+    flex: 1 1 250px;
+    margin: 2px 0;
+    font-size: 12px;
 }

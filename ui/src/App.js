@@ -1,12 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from '#pages/Home';
 import Compare from '#pages/Compare';
-import TitleDirectory from '#pages/TitleDirectory';
+import JobTitleDirectory from '#pages/JobTitleDirectory';
 import AboutMe from '#pages/AboutMe';
 import AddSalary from '#pages/AddSalary';
+import SalarySubmission from '#pages/SalarySubmission';
+import JobListPage from '#pages/JobListPage';
+
 import Navbar from '#components/Navbar';
 import Footnote from '#components/Footnote';
-import SalarySubmission from '#pages/SalarySubmission';
 import './App.css';
 
 function App() {
@@ -18,10 +20,11 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/compare" element={<Compare />} />
-                        <Route path="/title-directory" element={<TitleDirectory />} />
+                        <Route path="/job-title-directory" element={<JobTitleDirectory />} />
                         <Route path="/about-me" element={<AboutMe />} />
                         <Route path="/add-salary" element={<AddSalary />} />
                         <Route path="/salary-submission" element={<SalarySubmission />} />
+                        <Route path="/jobs" element={<JobListPage />} />
                     </Routes>
                 </div>
                 <Footnote />
