@@ -1,12 +1,13 @@
-// import React, { useEffect, useState } from "react";
-// import { testConnection } from "./api";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Compare from './pages/Compare';
-import AboutMe from './pages/AboutMe';
-import Navbar from './components/Navbar';
-import TitleDirectory from './pages/TitleDirectory';
-import Footnote from './components/Footnote';
+import Home from '#pages/Home';
+import Compare from '#pages/Compare';
+import TitleDirectory from '#pages/TitleDirectory';
+import AboutMe from '#pages/AboutMe';
+import AddSalary from '#pages/AddSalary';
+import Navbar from '#components/Navbar';
+import Footnote from '#components/Footnote';
+import SalarySubmission from '#pages/SalarySubmission';
+import './App.css';
 
 function App() {
     return (
@@ -19,6 +20,8 @@ function App() {
                         <Route path="/compare" element={<Compare />} />
                         <Route path="/title-directory" element={<TitleDirectory />} />
                         <Route path="/about-me" element={<AboutMe />} />
+                        <Route path="/add-salary" element={<AddSalary />} />
+                        <Route path="/salary-submission" element={<SalarySubmission />} />
                     </Routes>
                 </div>
                 <Footnote />
@@ -26,25 +29,5 @@ function App() {
         </Router>
     );
 }
-
-// 
-// function App() {
-//     const [message, setMessage] = useState("");
-
-//     useEffect(() => {
-//         const fetchData = async () => {
-//             const data = await testConnection();
-//             setMessage(data.message);
-//         };
-//         fetchData();
-//     }, []);
-
-//     return (
-//         <div style={{ textAlign: "center", marginTop: "50px" }}>
-//             <h1>Frontend to Backend Connection Test</h1>
-//             <p>{message ? message : "Connecting to backend..."}</p>
-//         </div>
-//     );
-// }
 
 export default App;

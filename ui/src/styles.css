@@ -70,3 +70,14 @@ p {
     margin: 0 auto;
     overflow-x: hidden;
 }
+
+a {
+    text-decoration: none;
+    color: inherit;
+    /* Ensures links follow normal text color */
+}
+
+/* Optional: Remove underline on hover globally */
+a:hover {
+    text-decoration: none;
+}

@@ -41,3 +41,14 @@ export const getJobs = async () => {
         return [];
     }
 };
+
+export const postSalaries = async (salaryData) => {
+    try {
+        const response = await axios.post(`${API_URL}/salaries`, salaryData);
+        console.log('response', response);
+        return response.data;
+    } catch (error) {
+        console.error('Error submitting salary:', error);
+        return null;
+    }
+};

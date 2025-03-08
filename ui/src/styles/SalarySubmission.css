@@ -1,0 +1,70 @@
+/* =======================
+   Salary Submission Page
+   ======================= */
+.salary-submission-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 221px);
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+/* Content Box */
+.submission-content {
+    max-width: 500px;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+.salary-submission-page h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Text */
+.salary-submission-page p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Action Buttons */
+.submission-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.view-salaries,
+.return-home {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 6px;
+    border: 1px solid #333;
+    transition: all 0.2s ease-in-out;
+}
+
+.view-salaries {
+    background-color: white;
+    color: #333;
+}
+
+.return-home {
+    background-color: #333;
+    color: white;
+}
+
+.view-salaries:hover,
+.return-home:hover {
+    opacity: 0.8;
+}

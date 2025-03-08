@@ -37,4 +37,13 @@ salaries.get('/', (req, res) => {
     ]);
 });
 
+salaries.post('/', (req, res) => {
+    const { jobTitle, company, location, salary, additionalInfo } = req.body;
+    res.json({
+        data: {
+            jobTitle, company, location, salary, additionalInfo
+        }
+    });
+});
+
 export default salaries;

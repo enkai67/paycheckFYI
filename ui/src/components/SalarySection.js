@@ -23,12 +23,12 @@ const SalarySection = () => {
             <div className="salary-scroll-container">
                 {/* Add Salary Block */}
                 <div className="salary-wrapper">
-                    <div className="salary-card add-salary">
+                    <Link to="/add-salary" className="salary-card add-salary">
                         <div className="icon-wrapper">
                             <FontAwesomeIcon icon={faPlus} className="add-icon" />
                         </div>
                         <p>Add Salary</p>
-                    </div>
+                    </Link>
                 </div>
 
                 {/* Render Salary List */}
