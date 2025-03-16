@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import '#styles/JobInfoSection.css';
-import { getJobs } from '#apis/index';
 import Pagination from '#components/Pagination';
 
-const JobInfoSection = () => {
+const JobInfoSection = ({ filterTitle = '' }) => {
     const jobsPerPage = 10;
     const [expandedRow, setExpandedRow] = useState(null);
     const [jobData, setJobData] = useState([]);
@@ -15,14 +15,19 @@ const JobInfoSection = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const jobs = await getJobs();
-                setJobData(jobs);
+                let url = 'http://localhost:5001/api/jobs';
+                if (filterTitle) {
+                    url = `http://localhost:5001/api/jobs?title=${encodeURIComponent(filterTitle)}`;
+                }
+                console.log('Fetching jobs from:', url);
+                const response = await axios.get(url);
+                setJobData(response.data);
             } catch (error) {
                 console.error('Error fetching jobs:', error);
             }
         };
         fetchData();
-    }, []);
+    }, [filterTitle]);
 
     const toggleRow = (id) => {
         setExpandedRow(expandedRow === id ? null : id);
@@ -73,7 +78,6 @@ const JobInfoSection = () => {
                                         <td>${job.baseSalary?.toLocaleString() || 'N/A'}</td>
                                         <td>${job.total?.toLocaleString() || 'N/A'}</td>
                                     </tr>
-
                                     <tr className="detail-row">
                                         <td colSpan="6">
                                             <div
